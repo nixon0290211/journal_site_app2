@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
-    ｛
+｛
     public function index()
     {
         $articles = Article::all();
