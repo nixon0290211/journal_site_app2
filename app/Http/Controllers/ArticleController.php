@@ -18,7 +18,7 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         // インスタンスの作成
         $article = new Article;
@@ -45,13 +45,13 @@ class ArticleController extends Controller
         $article = Article::find($id);
         return view('articles.edit', ['article' => $article]);
     }
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         // ここはidで探して持ってくる以外はstoreと同じ
         $article = new Article;
 
         // 値の用意
-            $article->title = $request->title;
+        $article->title = $request->title;
         $article->body = $request->body;
 
           // 保存
@@ -61,12 +61,10 @@ class ArticleController extends Controller
         return redirect('/articles');
     }
     public function destroy($id)
+    {
+    $article = Article::find($id);
+        $article->delete();
 
-
-    // {
-    //     $article = Article::find($id);
-    //     $article->delete();
-
-    //     return redirect('/articles');
-    // }
-    ｝
+    return redirect('/articles');
+    }
+｝
